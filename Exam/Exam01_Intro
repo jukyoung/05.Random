@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class Exam01_Intro {
+	public static void main(String[] args) {
+
+		/*
+		 * 랜덤한 수 생성 -> Math.random() : 0.0 ~ 1.0 사이의 난수를 생성
+		 * 
+		 * 
+		 */
+
+		// System.out.println( Math.random() );
+		/*
+		 * for(int i = 0; i < 5; i++) { System.out.println(Math.random()); }
+		 */
+
+		// 지정한 숫자 범위 내에서 랜덤한 수를 뽑아내고 싶을 때
+		// (Math.random() * (최대값 - 최소값 + 1)) + 최소값
+		/*
+		 * for(int i =0; i <50; i++) { System.out.print((char)((Math.random() * (122 -
+		 * 65 + 1)) + 65) + " "); }
+		 */
+
+		// 퀴즈: 1~ 10 사이의 랜덤값을 컴퓨터가 뽑아내면 -> 사용자가 홀/짝 중 하나를 입력
+		// -> 홀인지 짝인지 여부에 따라 사용자에게 정답! 혹은 실패! 라는 출력구문을 보여준다.
+		Scanner sc = new Scanner(System.in);
+		
+		int min = 1;
+		int max = 10;
+		int ranNum = (int) (Math.random() * (max - min + 1) + min);
+		
+		
+		String rs;// ㄷ.
+		
+		
+		//의미없는 것으로 값을 잡아준다.
+		if ((ranNum % 2) == 0) {
+			rs = "짝"; // -> ㄴ. String rs 는 지역변수 main에서 쓰기 위해 위에서 선언해주고
+						// ㄹ. if문에선 String 빼고 rs 만 쓰기
+		} else{ 
+			rs = "홀";
+		}
+		System.out.println("ranNum : " +ranNum);
+		System.out.println("==== 홀/짝 맞추기 게임 ====");
+		System.out.print("홀/짝을 입력하세요. >> ");
+		String q = sc.nextLine();
+
+		if (q.equals(rs)) {// ㄱ. 변수 rs가 위에있는 if문의 지역변수여서 main에서 사용 못함
+		// 위에서 else 대신 else if(ranNum % 2 == 1) 하면 여기서 rs가 오류남
+		// -> rs 라고 하는 변수 공간이 생겨나긴 했는데 안에 데이터 저장이 안되어 있을 수도 있다
+		// -> 실행되기 전 까지 컴퓨터는 모르기 때문에 
+		// if 가 실행될 수 없고 else if 가 실행될수 없다고 생각 해서 rs 공간이 비어있다 고 생각 즉 비어있는공간 사용 할수없다
+	    // -> 에러남
+	    // if, else 는 둘중 하나는 무조건 실행되니까 rs 공간이 비어있지 않다. 에러 발생x 
+			System.out.println("정답!");
+		} else {
+			System.out.println("실패!");
+			
+		// 변수를 선언해놓고 어떤 값이 들어갈지 모르는 상태 -> 초기화를 해주면 에러가 안난다.	
+		//초기화 : 변수에 초기값(default값)을 주는것 (비어있지 않게 해준다)
+		String s = ""; // (참조자료형)  
+		String s1 = null; // null -> 아무것도 아닌값을 표현
+		
+			
+		}
+	}
+}
